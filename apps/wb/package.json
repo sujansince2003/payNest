@@ -1,0 +1,24 @@
+{
+  "name": "webhook-server",
+  "version": "1.0.0",
+  "description": "webhook express server to handle the bank API request and app request",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webhook",
+    "bank",
+    "server",
+    "api"
+  ],
+  "author": "sujan khatri",
+  "license": "ISC",
+  "dependencies": {
+    "@repo/db": "*",
+    "@types/express": "^5.0.1",
+    "esbuild": "^0.25.4",
+    "express": "^5.1.0",
+    "zod": "^3.24.4"
+  }
+}
