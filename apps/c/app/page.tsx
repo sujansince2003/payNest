@@ -1,17 +1,12 @@
-"use client";
-import Alert from "@repo/ui/alert";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "../lib/authOptions";
 
-export default function Home() {
-  async function getUsers() {
-    const users = await fetch("/api/user");
-    const userjson = await users.json();
-    console.log(userjson);
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+  if (session?.user) {
+    redirect("/dashboard");
+  } else {
+    return <div>helloo</div>;
   }
-
-  return (
-    <div>
-      <Alert />
-      <button onClick={() => getUsers()}>Get Users</button>
-    </div>
-  );
 }
