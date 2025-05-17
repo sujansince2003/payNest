@@ -19,21 +19,22 @@ export async function POST(req: NextRequest) {
         })
 
         if (userExist) {
-            return NextResponse.json({ msg: "user already exists" })
+            return NextResponse.json({ msg: "user already exists" }, { status: 400 })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const newuser = await prisma.user.create({
             data: {
-                email,
+                email: email,
                 password: hashedPassword
             }
         })
 
-        return NextResponse.json({ msg: "user registered successfully", newuser })
+        return NextResponse.json({ msg: "user registered successfully" }, { status: 201 })
     } catch (error) {
         console.error(error)
-        return NextResponse.json({ msg: "error", error })
+        return NextResponse.json({ msg: "Internal Server Error", error }, { status: 500 })
     }
 
 
