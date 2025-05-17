@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import SessionProviderWrapper from "./provider/SessionProvider";
+import RecoilProvider from "./provider/RecoilProvider";
+import AppbarClient from "../components/AppbarClient";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <SessionProviderWrapper>
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          {children}
-        </body>
-      </SessionProviderWrapper>
+      <RecoilProvider>
+        <SessionProviderWrapper>
+          <body className={`${geistSans.variable} ${geistMono.variable}`}>
+            <AppbarClient />
+            {children}
+          </body>
+        </SessionProviderWrapper>
+      </RecoilProvider>
     </html>
   );
 }
