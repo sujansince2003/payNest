@@ -19,9 +19,13 @@ export const Appbar = ({
     <div className="flex justify-between border-b px-4 border-slate-300">
       <div className="text-lg flex flex-col justify-center">PayNest</div>
       <div className="flex justify-center pt-2">
-        {!user && <Button onClick={OnRegister}>Register</Button>}
+        {!user && (
+          <Button amount={1} onClick={OnRegister}>
+            Register
+          </Button>
+        )}
 
-        <Button onClick={user ? onSignout : onSignin}>
+        <Button amount={1} onClick={user ? onSignout : onSignin}>
           {user ? "Logout" : "Login"}
         </Button>
       </div>

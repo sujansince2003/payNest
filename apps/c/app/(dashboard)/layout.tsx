@@ -1,6 +1,6 @@
 import React from "react";
 import { SidebarItem } from "../../components/SidebarItems";
-import { LayoutDashboard, Send, Scroll } from "lucide-react";
+import { LayoutDashboard, Send, Scroll, ArrowLeftRight } from "lucide-react";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex">
@@ -16,6 +16,11 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             href={"/transactions"}
             icon={<Scroll />}
             title="Transactions"
+          />
+          <SidebarItem
+            href={"/sendmoney"}
+            icon={<ArrowLeftRight />}
+            title="Send Money"
           />
         </div>
       </div>
