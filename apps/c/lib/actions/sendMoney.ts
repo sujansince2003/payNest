@@ -70,6 +70,16 @@ export async function handleP2P(amount: number, receiverEmail: string) {
           },
         },
       });
+
+      await transactionClient.p2pTransfer.create({
+        data: {
+          fromUserId: Number(session.user.id),
+          toUserId: receiverAccount.id,
+          amount,
+          timestamp: new Date()
+
+        }
+      })
     });
     return {
       msg: `Successfully transfered to ${receiverAccount.email}  `
